@@ -1,6 +1,6 @@
 ﻿namespace Labb2.Models
 {
-    public class Food
+    public class Dish
     {
         public int FoodId { get; set; }
         public string Name { get; set; }

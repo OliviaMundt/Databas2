@@ -4,7 +4,7 @@
 
 }
 
-@model Labb2.Models.Food
+@model Labb2.Models.Dish
 
 <h1>Lägg till recept</h1>
 
@@ -12,11 +12,11 @@
 
 <p>
 
-    <a asp-controller="Recept" asp-action="CreateFood" class="btn btn-primary">Lägg till recept</a>
+    <a asp-controller="Dish" asp-action="Create" class="btn btn-primary">Lägg till recept</a>
 
 </p>
 
-<form asp-action="CreateFood" asp-controller="Recept">
+<form asp-action="Create" asp-controller="Dish">
     <label>FoodId</label>
     <input class="form-control" type="number" placeholder="0" asp-for="FoodId" />
 
