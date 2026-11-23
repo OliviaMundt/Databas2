@@ -1,5 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model List<Labb2.Models.Dish>
+
+<h1>@ViewData["Rubrik"]</h1>
+<p>Kryssa i de rätter du vill laga för att räkna ut den totala tillagningstiden:</p>
+
+
+<form asp-action="Plan" asp-controller="Dish" method="post">
+    @foreach (var dish in Model)
+    {
+        <div>
+            <input type="checkbox" value="@dish.DishId" name="DishList" /> 
+            @dish.Name @dish.Time min
+        </div>
+    }
+
+    <button class="btn btn-primary mt-4" type="submit">Räkna ut</button>
+
+</form>
+
+    @if (ViewData["Den sammanlagda tiden"] != null)
+{
+    <div class="alert alert-success mt-4">
+        <strong>@ViewBag.AntalValda</strong> rätter.
+        Total tillagningstid: <strong>@ViewData["Den sammanlagda tiden"] minuter</strong>!
+    </div>
 }

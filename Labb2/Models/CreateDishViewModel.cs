@@ -6,8 +6,7 @@
         public int Time { get; set; }
         public List<Diet> AllDiets { get; set; }
 
-        public List<int> ChosenDiets {  get; set; }
-
+        public List<int> ChosenDiets { get; set; } = new List<int>();
 
     }
 }

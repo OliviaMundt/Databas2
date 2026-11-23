@@ -96,6 +96,8 @@ namespace Labb2.Controllers
             return RedirectToAction("Index");
         }
 
+
+
         public IActionResult Plan()
         {
             ViewData["Rubrik"] = "Planera din matlagning";
@@ -103,9 +105,21 @@ namespace Labb2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Plan()
+        public IActionResult Plan(List<int> DishList)
         {
-            return View(GetDishes());
+            ViewData["Rubrik"] = "Planera din matlagning";
+
+            int sum = 0;
+            var dishes = GetDishes();
+            var selectedDishes = dishes.Where(d => DishList.Contains(d.DishId)).ToList();
+
+            foreach (var dish in selectedDishes)
+            {
+                sum = sum + dish.Time;
+            }
+
+            ViewData["Den sammanlagda tiden"] = sum;
+            return View(dishes);
         }
 
     }
