@@ -23,13 +23,12 @@
     
 
 
-        @foreach (Diet diet in Model.AllDiets)
-        {
-            <div>
-            <input type="checkbox" value="@diet.DietId" name="ChosenDiets" checked=@Model.ChosenDiets.Contains(diet) />
-               
-            </div>
-        }
+    @foreach (Diet diet in Model.AllDiets)
+    {
+        <div>
+            <input type="checkbox" value="@diet.DietId" name="ChosenDiets" /> @diet.Name
+        </div>
+    }
 
   
 

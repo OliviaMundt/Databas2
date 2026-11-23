@@ -64,6 +64,16 @@
                 </td>
 
                 <td>
+                    @if (item.Diets != null)
+                    {
+                        foreach (var diet in item.Diets)
+                        {
+                            <span>@diet.Name </span>
+                        }
+                    }
+                </td>
+
+                <td>
 
                     <a asp-action="Edit" asp-route-id="@item.DishId">Edit</a> |
 
