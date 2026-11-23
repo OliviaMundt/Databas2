@@ -11,11 +11,20 @@ namespace Labb2.Controllers
         public static List<Dish> Dishes = new List<Dish>
         {
 
-            new Dish { FoodId = 1, Name = "Pannkakor", Time = 45 },
-            new Dish { FoodId = 2, Name = "Köttbullar med mos", Time = 130 },
-            new Dish { FoodId = 3, Name = "Linsgryta", Time = 30 }
+            new Dish { DishId = 1, Name = "Pannkakor", Time = 45 },
+            new Dish { DishId = 2, Name = "Köttbullar med mos", Time = 130 },
+            new Dish { DishId = 3, Name = "Linsgryta", Time = 30 }
         };
-   
+
+        public static List<Diet> Diets = new List<Diet>
+        {
+            new Diet { DietId = 1, Name = "Gluten" },
+            new Diet { DietId = 2, Name = "Vegetariskt" },
+            new Diet { DietId = 3, Name = "Veganskt" },
+
+        };
+
+
 
         public IActionResult Index()
         {
@@ -25,13 +34,17 @@ namespace Labb2.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            CreateDishViewModel vm = new CreateDishViewModel{AllDiets = Diets, ChosenDiets=new List<Diet>()};
+
+            return View(vm);
+
+ 
         }
 
         [HttpPost]
-        public IActionResult Create(Dish nyttRecept)
+        public IActionResult Create(CreateDishViewModel vm)
         {
-            Dishes.Add(nyttRecept);
+            Dishes.Add(vm);
             return RedirectToAction("Index");
         }
 

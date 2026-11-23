@@ -1,10 +1,7 @@
-﻿@{
+﻿
 
-    ViewData["Title"] = "Lägg till recept";
+@model Labb2.Models.CreateDishViewModel
 
-}
-
-@model Labb2.Models.Dish
 
 <h1>Lägg till recept</h1>
 
@@ -17,14 +14,24 @@
 </p>
 
 <form asp-action="Create" asp-controller="Dish">
-    <label>FoodId</label>
-    <input class="form-control" type="number" placeholder="0" asp-for="FoodId" />
 
     <label class="mt-4">Name</label>
     <input class="form-control" type="text" placeholder="Add the name" asp-for="Name" />
 
     <label class="mt-4">Time</label>
     <input class="form-control" type="number" placeholder="0" asp-for="Time" />
+    
+
+
+        @foreach (Diet diet in Model.AllDiets)
+        {
+            <div>
+            <input type="checkbox" value="@diet.DietId" name="ChosenDiets" checked=@Model.ChosenDiets.Contains(diet) />
+               
+            </div>
+        }
+
+  
 
     <button class="btn btn-primary mt-4" type="submit">Ok</button>
 </form>
